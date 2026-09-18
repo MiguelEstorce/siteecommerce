@@ -7,31 +7,33 @@
    GOOGLE ANALYTICS
    ============================================================ */
 
-/*
- * Verifica se o Google Analytics está carregado.
- */
 function analyticsEvent(eventName, parameters = {}) {
+
   if (typeof gtag === "function") {
     gtag("event", eventName, parameters);
   }
+
 }
 
 
-/*
- * Descobre o domínio da loja a partir do link do produto.
- *
- * Exemplo:
- * https://www.exemplo.com/produto
- *
- * retorna:
- * exemplo.com
- */
+/* ============================================================
+   INFORMAÇÕES DA LOJA
+   ============================================================ */
+
 function getStoreName(link) {
+
   try {
-    return new URL(link).hostname.replace(/^www\./, "");
+
+    return new URL(link)
+      .hostname
+      .replace(/^www\./, "");
+
   } catch {
+
     return "Loja não identificada";
+
   }
+
 }
 
 
@@ -39,129 +41,442 @@ function getStoreName(link) {
    RENDER DOS PRODUTOS
    ============================================================ */
 
-const grid = document.getElementById("productGrid");
-const emptyState = document.getElementById("emptyState");
+const grid =
+  document.getElementById("productGrid");
 
+const emptyState =
+  document.getElementById("emptyState");
+
+const pagination =
+  document.getElementById("pagination");
+
+
+/*
+ * Quantidade de produtos por página.
+ */
+
+const PRODUCTS_PER_PAGE = 8;
+
+
+/*
+ * Página atual.
+ */
+
+let currentPage = 1;
+
+
+/*
+ * Lista atualmente filtrada.
+ */
+
+let currentProducts = [];
+
+
+/* ============================================================
+   CATEGORIAS
+   ============================================================ */
 
 function getCategories(product) {
 
-  // Se tiver várias categorias, usa elas
   if (Array.isArray(product.categories)) {
     return product.categories;
   }
 
-  // Se tiver apenas uma categoria, transforma em array
   if (product.category) {
     return [product.category];
   }
 
-  // Caso não tenha categoria
   return [];
+
 }
 
 
-/*
- * Cria os cards dos produtos.
- */
-function renderProducts(list) {
+/* ============================================================
+   CRIAÇÃO DOS CARDS
+   ============================================================ */
+
+function createProductCard(p) {
+
+  const categories =
+    getCategories(p);
+
+
+  const card =
+    document.createElement("a");
+
+
+  card.href = p.link;
+
+  card.target = "_blank";
+
+  card.rel = "noopener";
+
+  card.className = "product-card";
+
+
+  /*
+   * Todas as categorias do produto.
+   */
+
+  card.dataset.category =
+    categories.join(" ");
+
+
+  card.innerHTML = `
+
+    <div
+      class="product-thumb"
+      style="background-image:url('${p.image}')"
+    >
+
+      ${
+        p.tag
+          ? `<span class="product-tag">${p.tag}</span>`
+          : ""
+      }
+
+    </div>
+
+
+    <div class="product-body">
+
+      <span class="product-cat">
+        ${p.categoryLabel || ""}
+      </span>
+
+
+      <span class="product-name">
+        ${p.name}
+      </span>
+
+
+      <div class="product-footer">
+
+        <span class="product-price">
+
+          ${p.price}
+
+          ${
+            p.oldPrice
+              ? `<small>${p.oldPrice}</small>`
+              : ""
+          }
+
+        </span>
+
+
+        <span class="product-link">
+          Ver oferta ↗
+        </span>
+
+      </div>
+
+    </div>
+
+  `;
+
+
+  /* ========================================================
+     GOOGLE ANALYTICS — CLIQUE NO PRODUTO
+     ======================================================== */
+
+  card.addEventListener("click", () => {
+
+    analyticsEvent("product_click", {
+
+      product_name:
+        p.name,
+
+      product_category:
+        p.categoryLabel ||
+        categories.join(", "),
+
+      store:
+        getStoreName(p.link),
+
+      product_url:
+        p.link
+
+    });
+
+  });
+
+
+  return card;
+
+}
+
+
+/* ============================================================
+   PAGINAÇÃO
+   ============================================================ */
+
+function renderPagination() {
+
+  pagination.innerHTML = "";
+
+
+  /*
+   * Quantidade total de páginas.
+   */
+
+  const totalPages =
+    Math.ceil(
+      currentProducts.length /
+      PRODUCTS_PER_PAGE
+    );
+
+
+  /*
+   * Se tiver apenas uma página,
+   * não mostra paginação.
+   */
+
+  if (totalPages <= 1) {
+
+    pagination.style.display = "none";
+
+    return;
+
+  }
+
+
+  pagination.style.display = "flex";
+
+
+  /*
+   * BOTÃO ANTERIOR
+   */
+
+  const previousButton =
+    document.createElement("button");
+
+
+  previousButton.type = "button";
+
+  previousButton.className =
+    "pagination-button pagination-prev";
+
+
+  previousButton.innerHTML =
+    "← Anterior";
+
+
+  previousButton.disabled =
+    currentPage === 1;
+
+
+  previousButton.addEventListener(
+    "click",
+    () => {
+
+      if (currentPage > 1) {
+
+        currentPage--;
+
+        renderCurrentPage();
+
+        scrollToProducts();
+
+      }
+
+    }
+  );
+
+
+  pagination.appendChild(
+    previousButton
+  );
+
+
+  /*
+   * NÚMEROS DAS PÁGINAS
+   */
+
+  for (
+    let page = 1;
+    page <= totalPages;
+    page++
+  ) {
+
+    const pageButton =
+      document.createElement("button");
+
+
+    pageButton.type = "button";
+
+    pageButton.className =
+      "pagination-button pagination-number";
+
+
+    pageButton.textContent =
+      page;
+
+
+    if (page === currentPage) {
+
+      pageButton.classList.add(
+        "is-active"
+      );
+
+      pageButton.setAttribute(
+        "aria-current",
+        "page"
+      );
+
+    }
+
+
+    pageButton.addEventListener(
+      "click",
+      () => {
+
+        currentPage = page;
+
+        renderCurrentPage();
+
+        scrollToProducts();
+
+      }
+    );
+
+
+    pagination.appendChild(
+      pageButton
+    );
+
+  }
+
+
+  /*
+   * BOTÃO PRÓXIMA
+   */
+
+  const nextButton =
+    document.createElement("button");
+
+
+  nextButton.type = "button";
+
+  nextButton.className =
+    "pagination-button pagination-next";
+
+
+  nextButton.innerHTML =
+    "Próxima →";
+
+
+  nextButton.disabled =
+    currentPage === totalPages;
+
+
+  nextButton.addEventListener(
+    "click",
+    () => {
+
+      if (currentPage < totalPages) {
+
+        currentPage++;
+
+        renderCurrentPage();
+
+        scrollToProducts();
+
+      }
+
+    }
+  );
+
+
+  pagination.appendChild(
+    nextButton
+  );
+
+}
+
+
+/* ============================================================
+   RENDERIZA A PÁGINA ATUAL
+   ============================================================ */
+
+function renderCurrentPage() {
 
   grid.innerHTML = "";
 
-  if (list.length === 0) {
+
+  /*
+   * Nenhum produto.
+   */
+
+  if (currentProducts.length === 0) {
+
     emptyState.hidden = false;
+
+    pagination.innerHTML = "";
+
+    pagination.style.display = "none";
+
     return;
+
   }
+
 
   emptyState.hidden = true;
 
 
-  list.forEach(p => {
+  /*
+   * Calcula onde começa e termina a página.
+   */
 
-    const categories = getCategories(p);
-
-    const card = document.createElement("a");
-
-    card.href = p.link;
-    card.target = "_blank";
-    card.rel = "noopener";
-    card.className = "product-card";
+  const startIndex =
+    (currentPage - 1) *
+    PRODUCTS_PER_PAGE;
 
 
-    // Todas as categorias do produto
-    card.dataset.category = categories.join(" ");
+  const endIndex =
+    startIndex +
+    PRODUCTS_PER_PAGE;
 
 
-    card.innerHTML = `
-      <div
-        class="product-thumb"
-        style="background-image:url('${p.image}')"
-      >
-        ${
-          p.tag
-            ? `<span class="product-tag">${p.tag}</span>`
-            : ""
-        }
-      </div>
-
-      <div class="product-body">
-
-        <span class="product-cat">
-          ${p.categoryLabel || ""}
-        </span>
-
-        <span class="product-name">
-          ${p.name}
-        </span>
-
-        <div class="product-footer">
-
-          <span class="product-price">
-            ${p.price}
-
-            ${
-              p.oldPrice
-                ? `<small>${p.oldPrice}</small>`
-                : ""
-            }
-          </span>
-
-          <span class="product-link">
-            Ver oferta ↗
-          </span>
-
-        </div>
-
-      </div>
-    `;
+  const pageProducts =
+    currentProducts.slice(
+      startIndex,
+      endIndex
+    );
 
 
-    /* ========================================================
-       ANALYTICS — CLIQUE NO PRODUTO
-       ======================================================== */
+  /*
+   * Cria os cards somente
+   * da página atual.
+   */
 
-    card.addEventListener("click", () => {
+  pageProducts.forEach(p => {
 
-      analyticsEvent("product_click", {
-
-        product_name: p.name,
-
-        product_category:
-          p.categoryLabel || categories.join(", "),
-
-        store:
-          getStoreName(p.link),
-
-        product_url:
-          p.link
-
-      });
-
-    });
-
-
-    grid.appendChild(card);
+    grid.appendChild(
+      createProductCard(p)
+    );
 
   });
+
+
+  /*
+   * Atualiza a paginação.
+   */
+
+  renderPagination();
+
+}
+
+
+/* ============================================================
+   RENDER PRINCIPAL
+   ============================================================ */
+
+function renderProducts(list) {
+
+  currentProducts = list;
+
+  renderCurrentPage();
 
 }
 
@@ -172,18 +487,15 @@ function renderProducts(list) {
 
 let activeCategory = "todos";
 
+
 const searchInput =
   document.getElementById("searchInput");
 
 
 /*
- * Remove acentos e deixa o texto padronizado.
- *
- * Exemplo:
- *
- * "Câmera" → "camera"
- * "Acessórios" → "acessorios"
+ * Normaliza texto.
  */
+
 function normalizeText(text) {
 
   return String(text || "")
@@ -198,10 +510,13 @@ function normalizeText(text) {
 /*
  * Aplica categoria + pesquisa.
  */
+
 function applyFilters() {
 
   const term =
-    normalizeText(searchInput.value);
+    normalizeText(
+      searchInput.value
+    );
 
 
   const filtered =
@@ -212,40 +527,58 @@ function applyFilters() {
 
 
       /*
-       * Verifica a categoria.
+       * Categoria.
        */
+
       const matchesCategory =
         activeCategory === "todos" ||
-        categories.includes(activeCategory);
+        categories.includes(
+          activeCategory
+        );
 
 
       /*
-       * Texto que poderá ser pesquisado.
-       *
-       * Nome
-       * Categoria
-       * Etiqueta
+       * Texto pesquisável.
        */
+
       const searchableText =
         normalizeText(`
+
           ${p.name || ""}
+
           ${p.categoryLabel || ""}
+
           ${p.tag || ""}
+
           ${categories.join(" ")}
+
         `);
 
 
       /*
-       * Verifica a pesquisa.
+       * Pesquisa.
+
        */
+
       const matchesSearch =
         term === "" ||
         searchableText.includes(term);
 
 
-      return matchesCategory && matchesSearch;
+      return (
+        matchesCategory &&
+        matchesSearch
+      );
 
     });
+
+
+  /*
+   * Sempre volta para a página 1
+   * quando o filtro muda.
+   */
+
+  currentPage = 1;
 
 
   renderProducts(filtered);
@@ -254,6 +587,7 @@ function applyFilters() {
   /*
    * Mensagem quando não encontrar.
    */
+
   if (filtered.length === 0) {
 
     if (term !== "") {
@@ -284,58 +618,65 @@ function applyFilters() {
 
 document
   .getElementById("catRow")
-  .addEventListener("click", (e) => {
+  .addEventListener(
+    "click",
+    (e) => {
 
-    const chip =
-      e.target.closest(".cat-chip");
-
-    if (!chip) return;
-
-
-    document
-      .querySelectorAll(".cat-chip")
-      .forEach(c => {
-
-        c.classList.remove("is-active");
-
-      });
+      const chip =
+        e.target.closest(".cat-chip");
 
 
-    chip.classList.add("is-active");
+      if (!chip) return;
 
 
-    activeCategory =
-      chip.dataset.filter;
+      document
+        .querySelectorAll(".cat-chip")
+        .forEach(c => {
+
+          c.classList.remove(
+            "is-active"
+          );
+
+        });
 
 
-    /*
-     * GOOGLE ANALYTICS
-     *
-     * Registra a categoria selecionada.
-     */
-    analyticsEvent("category_click", {
-
-      category:
-        chip.dataset.filter,
-
-      category_name:
-        chip.textContent.trim()
-
-    });
+      chip.classList.add(
+        "is-active"
+      );
 
 
-    applyFilters();
+      activeCategory =
+        chip.dataset.filter;
 
-  });
+
+      /*
+       * GOOGLE ANALYTICS
+       */
+
+      analyticsEvent(
+        "category_click",
+        {
+
+          category:
+            chip.dataset.filter,
+
+          category_name:
+            chip.textContent.trim()
+
+        }
+      );
+
+
+      applyFilters();
+
+    }
+  );
 
 
 /* ============================================================
    PESQUISA
    ============================================================ */
 
-/*
- * Aplicação normal do filtro.
- */
 searchInput.addEventListener(
   "input",
   applyFilters
@@ -344,74 +685,103 @@ searchInput.addEventListener(
 
 /*
  * GOOGLE ANALYTICS — PESQUISA
- *
- * Espera 800ms depois que a pessoa parar de digitar.
- *
- * Assim não registramos:
- *
- * m
- * mo
- * moc
- * moch
- * mochila
- *
- * como cinco pesquisas diferentes.
  */
 
 let searchTimer = null;
+
 let lastTrackedSearch = "";
 
 
-searchInput.addEventListener("input", () => {
+searchInput.addEventListener(
+  "input",
+  () => {
 
-  clearTimeout(searchTimer);
-
-
-  searchTimer = setTimeout(() => {
-
-    const originalTerm =
-      searchInput.value.trim();
-
-    const term =
-      normalizeText(originalTerm);
+    clearTimeout(searchTimer);
 
 
-    /*
-     * Não registra pesquisas vazias
-     * ou muito pequenas.
-     */
-    if (term.length < 2) {
-      return;
-    }
+    searchTimer =
+      setTimeout(() => {
+
+        const originalTerm =
+          searchInput.value.trim();
 
 
-    /*
-     * Não registra novamente
-     * exatamente a mesma pesquisa.
-     */
-    if (term === lastTrackedSearch) {
-      return;
-    }
+        const term =
+          normalizeText(
+            originalTerm
+          );
 
 
-    lastTrackedSearch = term;
+        if (term.length < 2) {
+          return;
+        }
 
 
-    analyticsEvent("search", {
+        if (
+          term ===
+          lastTrackedSearch
+        ) {
 
-      search_term:
-        originalTerm
+          return;
 
-    });
+        }
 
-  }, 800);
 
-});
+        lastTrackedSearch =
+          term;
+
+
+        analyticsEvent(
+          "search",
+          {
+
+            search_term:
+              originalTerm
+
+          }
+        );
+
+
+      },
+      800
+    );
+
+  }
+);
+
+
+/* ============================================================
+   SCROLL PARA PRODUTOS
+   ============================================================ */
+
+function scrollToProducts() {
+
+  const productsSection =
+    document.getElementById(
+      "produtos"
+    );
+
+
+  if (!productsSection) {
+    return;
+  }
+
+
+  productsSection.scrollIntoView({
+    behavior: "smooth",
+    block: "start"
+  });
+
+}
 
 
 /* ============================================================
    RENDERIZAÇÃO INICIAL
    ============================================================ */
+
+currentProducts =
+  PRODUCTS;
+
 
 renderProducts(PRODUCTS);
 
@@ -421,40 +791,56 @@ renderProducts(PRODUCTS);
    ============================================================ */
 
 const menuToggle =
-  document.getElementById("menuToggle");
-
-const mainNav =
-  document.getElementById("mainNav");
-
-
-menuToggle.addEventListener("click", () => {
-
-  const isOpen =
-    mainNav.classList.toggle("is-open");
-
-
-  menuToggle.setAttribute(
-    "aria-expanded",
-    isOpen
+  document.getElementById(
+    "menuToggle"
   );
 
-});
+
+const mainNav =
+  document.getElementById(
+    "mainNav"
+  );
+
+
+menuToggle.addEventListener(
+  "click",
+  () => {
+
+    const isOpen =
+      mainNav.classList.toggle(
+        "is-open"
+      );
+
+
+    menuToggle.setAttribute(
+      "aria-expanded",
+      isOpen
+    );
+
+  }
+);
 
 
 mainNav
   .querySelectorAll("a")
   .forEach(link => {
 
-    link.addEventListener("click", () => {
+    link.addEventListener(
+      "click",
+      () => {
 
-      mainNav.classList.remove("is-open");
+        mainNav.classList.remove(
+          "is-open"
+        );
 
-      menuToggle.setAttribute(
-        "aria-expanded",
-        "false"
-      );
 
-    });
+        menuToggle.setAttribute(
+          "aria-expanded",
+          "false"
+        );
+
+      }
+    );
 
   });
 
