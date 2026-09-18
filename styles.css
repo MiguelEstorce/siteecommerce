@@ -524,31 +524,6 @@ img {
   margin-bottom: 40px;
 }
 
-.steps {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
-}
-.steps li {
-  border-top: 1.5px solid var(--line);
-  padding-top: 20px;
-}
-
-.step-num {
-  display: block;
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 0.95rem;
-  color: var(--gold);
-  margin-bottom: 14px;
-}
-.steps h3 {
-  font-size: 1.15rem;
-}
-
 /* ============ Divulgar produtos ============ */
 .produtos-funciona {
   padding: 72px 0 88px;
@@ -559,77 +534,6 @@ img {
 .produtos-funciona h2 {
   font-size: 1.9rem;
   margin-bottom: 40px;
-}
-
-.steps {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
-}
-.steps li {
-  border-top: 1.5px solid var(--line);
-  padding-top: 20px;
-}
-
-.step-num {
-  display: block;
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 0.95rem;
-  color: var(--gold);
-  margin-bottom: 14px;
-}
-.steps h3 {
-  font-size: 1.15rem;
-}
-
-.produtos {
-  padding: 80px 0;
-}
-
-.produtos-inner {
-  background: var(--panel);
-  border: 1.5px solid var(--line);
-  border-radius: var(--radius-lg);
-  padding: 52px 48px;
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 32px;
-  align-items: center;
-}
-
-.produtos-copy h2 {
-  font-size: 1.7rem;
-}
-
-.produtos-form {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-.produtos-form input {
-  flex: 1;
-  min-width: 200px;
-  padding: 13px 16px;
-  border-radius: 6px;
-  border: 1.5px solid var(--line);
-  font-family: var(--font-body);
-  font-size: 0.92rem;
-}
-.produtos-form input:focus {
-  border-color: var(--navy);
-  outline: none;
-}
-
-.form-msg {
-  grid-column: 1 / -1;
-  color: var(--ink-soft);
-  font-size: 0.88rem;
-  margin: 0;
-  min-height: 1em;
 }
 
 /* ============ Novidades ============ */
@@ -715,14 +619,6 @@ img {
 .hospedagens-form input:focus {
   border-color: var(--navy);
   outline: none;
-}
-
-.form-msg {
-  grid-column: 1 / -1;
-  color: var(--ink-soft);
-  font-size: 0.88rem;
-  margin: 0;
-  min-height: 1em;
 }
 
 /* ============ Sobre a plataforma ============ */
@@ -836,7 +732,7 @@ img {
   line-height: 1.75;
 }
 
-/* Responsivo */
+/* Responsivo (seção Sobre) */
 
 @media (max-width: 980px) {
   .sobre-grid {
@@ -1034,7 +930,7 @@ img {
   display: none;
 }
 
-/* ============ Responsivo ============ */
+/* ============ Responsivo (rodapé) ============ */
 
 @media (max-width: 720px) {
   .site-footer {
@@ -1075,5 +971,62 @@ img {
 
   .footer-column:last-child {
     grid-column: auto;
+  }
+}
+
+/* ============ Responsivo (global) ============ */
+
+@media (max-width: 980px) {
+  .hero-inner {
+    grid-template-columns: 1fr;
+  }
+  .hero-visual {
+    height: 300px;
+  }
+  .trust-inner {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .steps {
+    grid-template-columns: 1fr;
+  }
+  .novidades-inner,
+  .hospedagens-inner {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .main-nav {
+    display: none;
+  }
+  .search-box {
+    display: none;
+  }
+  .menu-toggle {
+    display: flex;
+  }
+
+  .main-nav.is-open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--bg);
+    padding: 20px 28px 28px;
+    border-bottom: 1px solid var(--line);
+    gap: 18px;
+  }
+
+  .header-inner {
+    flex-wrap: wrap;
+  }
+  .product-grid {
+    grid-template-columns: 1fr;
   }
 }
