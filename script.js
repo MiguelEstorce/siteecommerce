@@ -55,7 +55,7 @@ const pagination =
  * Quantidade de produtos por página.
  */
 
-const PRODUCTS_PER_PAGE = 8;
+const PRODUCTS_PER_PAGE = 5;
 
 
 /*
