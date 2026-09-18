@@ -616,61 +616,63 @@ function applyFilters() {
    CLIQUE NAS CATEGORIAS
    ============================================================ */
 
-document
-  .getElementById("catRow")
-  .addEventListener(
-    "click",
-    (e) => {
+document.getElementById("catRow").addEventListener("click", (e) => {
 
-      const chip =
-        e.target.closest(".cat-chip");
+  // Ignora os botões principais que apenas abrem/fecham o submenu
+  if (e.target.closest(".category-toggle")) {
+    return;
+  }
 
+  // Aceita apenas botões de filtro
+  const chip = e.target.closest(".cat-chip, .subcategory-button");
 
-      if (!chip) return;
+  if (!chip) return;
 
+  document.querySelectorAll(".cat-chip, .subcategory-button")
+    .forEach(c => c.classList.remove("is-active"));
 
-      document
-        .querySelectorAll(".cat-chip")
-        .forEach(c => {
+  chip.classList.add("is-active");
 
-          c.classList.remove(
-            "is-active"
-          );
+  activeCategory = chip.dataset.filter;
 
-        });
+  analyticsEvent("category_click", {
+    category: chip.dataset.filter,
+    category_name: chip.textContent.trim()
+  });
 
+  applyFilters();
+});
+/* ============================================================
+   CATEGORIAS — ABRIR / FECHAR SUBCATEGORIAS
+   ============================================================ */
 
-      chip.classList.add(
-        "is-active"
-      );
+document.querySelectorAll(".category-toggle").forEach((button) => {
+  button.addEventListener("click", (e) => {
+    e.stopPropagation();
 
+    const menu = button.closest(".category-menu");
 
-      activeCategory =
-        chip.dataset.filter;
+    // Fecha os outros menus
+    document.querySelectorAll(".category-menu.is-open").forEach((item) => {
+      if (item !== menu) {
+        item.classList.remove("is-open");
+      }
+    });
 
-
-      /*
-       * GOOGLE ANALYTICS
-       */
-
-      analyticsEvent(
-        "category_click",
-        {
-
-          category:
-            chip.dataset.filter,
-
-          category_name:
-            chip.textContent.trim()
-
-        }
-      );
+    // Abre/fecha o menu clicado
+    menu.classList.toggle("is-open");
+  });
+});
 
 
-      applyFilters();
-
-    }
-  );
+/* Fecha os menus ao clicar fora */
+document.addEventListener("click", (e) => {
+  if (!e.target.closest(".category-menu")) {
+    document.querySelectorAll(".category-menu.is-open").forEach((menu) => {
+      menu.classList.remove("is-open");
+    });
+  }
+});
 
 
 /* ============================================================

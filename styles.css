@@ -328,9 +328,11 @@ img {
 }
 
 /* ============ Categorias ============ */
+
 .categorias {
   padding: 56px 0 40px;
 }
+
 .categorias h2 {
   font-size: 1.4rem;
   margin-bottom: 20px;
@@ -340,6 +342,13 @@ img {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+/* Categoria principal */
+
+.category-menu {
+  position: relative;
 }
 
 .cat-chip {
@@ -352,18 +361,216 @@ img {
   font-size: 0.88rem;
   font-weight: 500;
   cursor: pointer;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+
   transition:
     border-color 0.15s ease,
     background 0.15s ease,
     color 0.15s ease;
 }
+
 .cat-chip:hover {
   border-color: var(--navy);
 }
+
 .cat-chip.is-active {
   background: var(--navy);
   border-color: var(--navy);
   color: var(--white);
+}
+
+/* Seta */
+
+.category-arrow {
+  font-size: 0.9rem;
+  line-height: 1;
+  transition: transform 0.2s ease;
+}
+
+.category-menu.is-open .category-arrow {
+  transform: rotate(180deg);
+}
+
+/* Dropdown */
+
+.category-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+
+  min-width: 190px;
+
+  padding: 7px;
+
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+
+  box-shadow:
+    0 12px 30px rgba(20, 23, 31, 0.12);
+
+  display: none;
+
+  z-index: 30;
+}
+
+.category-menu.is-open .category-dropdown {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Subcategorias */
+
+.subcategory-button {
+  width: 100%;
+
+  padding: 9px 12px;
+
+  border: none;
+  border-radius: 5px;
+
+  background: transparent;
+
+  color: var(--ink-soft);
+
+  font-family: var(--font-body);
+  font-size: 0.84rem;
+  font-weight: 500;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
+}
+
+.subcategory-button:hover {
+  background: rgba(28, 43, 69, 0.07);
+  color: var(--ink);
+}
+
+.subcategory-button.is-active {
+  background: var(--navy);
+  color: var(--white);
+}
+/* ============================================================
+   CATEGORIAS — SUBMENUS
+   ============================================================ */
+
+.category-menu {
+  position: relative;
+}
+
+.category-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.category-arrow {
+  font-size: 0.75rem;
+  transition: transform 0.2s ease;
+}
+
+.category-menu.is-open .category-arrow {
+  transform: rotate(180deg);
+}
+
+.category-dropdown {
+  display: none;
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  min-width: 190px;
+  padding: 8px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  z-index: 100;
+}
+
+.category-menu.is-open .category-dropdown {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.subcategory-button {
+  width: 100%;
+  padding: 9px 12px;
+  border: 0;
+  border-radius: 5px;
+  background: transparent;
+  color: var(--ink-soft);
+  font-family: var(--font-body);
+  font-size: 0.86rem;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.subcategory-button:hover {
+  background: #f3f3f1;
+  color: var(--navy);
+}
+
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+@media (max-width: 700px) {
+  .category-menu {
+    width: 100%;
+  }
+
+  .category-toggle {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .category-dropdown {
+    position: static;
+    width: 100%;
+    margin-top: 6px;
+    box-shadow: none;
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 720px) {
+
+  .cat-row {
+    gap: 8px;
+  }
+
+  .category-dropdown {
+    position: static;
+
+    margin-top: 8px;
+
+    width: 100%;
+    min-width: 0;
+
+    box-shadow: none;
+  }
+
+  .category-menu {
+    width: 100%;
+  }
+
+  .category-menu .cat-chip {
+    width: 100%;
+    justify-content: space-between;
+  }
+
 }
 
 /* ============ Produtos ============ */

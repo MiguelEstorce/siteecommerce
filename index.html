@@ -118,7 +118,7 @@
 
   
 
-  <section class="categorias" id="categorias">
+  <!--<section class="categorias" id="categorias">
     <div class="wrap">
       <h2>Categorias</h2>
       <div class="cat-row" id="catRow">
@@ -141,22 +141,428 @@
         <button class="cat-chip" data-filter="acessorios">Acessórios</button>
       </div>
     </div>
-  </section>
+  </section>-->
 
-   <section class="sobre-plataforma" id="sobre">
+  <section class="categorias" id="categorias">
+  <div class="wrap">
+    <h2>Categorias</h2>
+
+    <div class="cat-row" id="catRow">
+
+      <!-- TODOS -->
+      <button
+        type="button"
+        class="cat-chip is-active"
+        data-filter="todos">
+        Todos
+      </button>
+
+
+      <!-- FEMININO -->
+      <div class="category-menu">
+        <button
+          type="button"
+          class="cat-chip category-toggle"
+          data-category="feminino">
+          Feminino
+          <span class="category-arrow">⌄</span>
+        </button>
+
+        <div class="category-dropdown">
+          <button type="button" class="subcategory-button" data-filter="feminino">
+            Todos
+          </button>
+
+          <button type="button" class="subcategory-button" data-filter="roupas-feminino">
+            Roupas
+          </button>
+
+          <button type="button" class="subcategory-button" data-filter="calcados-feminino">
+            Calçados
+          </button>
+
+          <button type="button" class="subcategory-button" data-filter="bolsas-feminino">
+            Bolsas
+          </button>
+
+          <button type="button" class="subcategory-button" data-filter="acessorios-feminino">
+            Acessórios
+          </button>
+
+          <button type="button" class="subcategory-button" data-filter="beleza">
+            Beleza
+          </button>
+        </div>
+      </div>
+
+
+      <!-- MASCULINO -->
+      <div class="category-menu">
+        <button
+          type="button"
+          class="cat-chip category-toggle"
+          data-category="masculino">
+          Masculino
+          <span class="category-arrow">⌄</span>
+        </button>
+
+        <div class="category-dropdown">
+          <button type="button" class="subcategory-button" data-filter="masculino">
+            Todos
+          </button>
+
+          <button type="button" class="subcategory-button" data-filter="roupas-masculino">
+            Roupas
+          </button>
+
+          <button type="button" class="subcategory-button" data-filter="calcados-masculino">
+            Calçados
+          </button>
+
+          <button type="button" class="subcategory-button" data-filter="bolsas-masculino">
+            Bolsas
+          </button>
+
+          <button type="button" class="subcategory-button" data-filter="acessorios-masculinos">
+            Acessórios
+          </button>
+        </div>
+      </div>
+
+
+      <!-- INFANTIL -->
+      <div class="category-menu">
+        <button
+          type="button"
+          class="cat-chip category-toggle"
+          data-category="infantil">
+          Infantil
+          <span class="category-arrow">⌄</span>
+        </button>
+
+        <div class="category-dropdown">
+          <button type="button" class="subcategory-button" data-filter="infantil">
+            Todos
+          </button>
+
+          <button type="button" class="subcategory-button" data-filter="roupas-infantil">
+            Roupas
+          </button>
+
+          <button type="button" class="subcategory-button" data-filter="calcados-infantil">
+            Calçados
+          </button>
+
+          <button type="button" class="subcategory-button" data-filter="brinquedos">
+            Brinquedos
+          </button>
+
+          <button type="button" class="subcategory-button" data-filter="acessorios">
+            Acessórios
+          </button>
+        </div>
+      </div>
+
+
+      <!-- CASA -->
+      <div class="category-menu">
+        <button
+          type="button"
+          class="cat-chip category-toggle"
+          data-category="casa">
+          Casa
+          <span class="category-arrow">⌄</span>
+        </button>
+
+        <div class="category-dropdown">
+          <button type="button" class="subcategory-button" data-filter="casa">
+            Todos
+          </button>
+
+          <button type="button" class="subcategory-button" data-filter="cozinha">
+            Cozinha
+          </button>
+
+          <button type="button" class="subcategory-button" data-filter="quarto">
+            Quarto
+          </button>
+
+          <button type="button" class="subcategory-button" data-filter="sala">
+            Sala
+          </button>
+
+          <button type="button" class="subcategory-button" data-filter="banheiro">
+            Banheiro
+          </button>
+
+          <button type="button" class="subcategory-button" data-filter="limp">
+            Limpeza
+          </button>
+
+          <button type="button" class="subcategory-button" data-filter="acessorio-casa">
+            Acessórios
+          </button>
+
+          <button type="button" class="subcategory-button" data-filter="organizacao-casa">
+            Organização
+          </button>
+
+          <button type="button" class="subcategory-button" data-filter="decoracao-casa">
+            Decoração
+          </button>
+        </div>
+      </div>
+
+
+      <!-- CONSTRUÇÃO -->
+      <div class="category-menu">
+        <button
+          type="button"
+          class="cat-chip category-toggle"
+          data-category="obra">
+          Construção
+          <span class="category-arrow">⌄</span>
+        </button>
+
+        <div class="category-dropdown">
+          <button type="button" class="subcategory-button" data-filter="obra">
+            Todos
+          </button>
+
+          <button type="button" class="subcategory-button" data-filter="ferramentas">
+            Ferramentas
+          </button>
+
+          <button type="button" class="subcategory-button" data-filter="materiais">
+            Materiais
+          </button>
+
+          <button type="button" class="subcategory-button" data-filter="eletrica">
+            Elétrica
+          </button>
+
+          <button type="button" class="subcategory-button" data-filter="hidraulica">
+            Hidráulica
+          </button>
+
+          <button type="button" class="subcategory-button" data-filter="pintura">
+            Pintura
+          </button>
+        </div>
+      </div>
+
+
+      <!-- VIAGENS -->
+      <div class="category-menu">
+        <button
+          type="button"
+          class="cat-chip category-toggle"
+          data-category="viagem">
+          Viagens
+          <span class="category-arrow">⌄</span>
+        </button>
+
+        <div class="category-dropdown">
+          <button type="button" class="subcategory-button" data-filter="viagem">
+            Todos
+          </button>
+
+          <button type="button" class="subcategory-button" data-filter="camping">
+            Camping
+          </button>
+
+          <button type="button" class="subcategory-button" data-filter="malas">
+            Malas e Bolsas
+          </button>
+
+          <button type="button" class="subcategory-button" data-filter="acessorios-viagem">
+            Acessórios
+          </button>
+
+          <button type="button" class="subcategory-button" data-filter="organizacao">
+            Organização
+          </button>
+        </div>
+      </div>
+
+
+      <!-- ELETRÔNICOS -->
+      <div class="category-menu">
+        <button
+          type="button"
+          class="cat-chip category-toggle"
+          data-category="tech">
+          Eletrônicos
+          <span class="category-arrow">⌄</span>
+        </button>
+
+        <div class="category-dropdown">
+          <button type="button" class="subcategory-button" data-filter="tech">
+            Todos
+          </button>
+
+          <button type="button" class="subcategory-button" data-filter="celulares">
+            Celulares
+          </button>
+
+          <button type="button" class="subcategory-button" data-filter="computadores">
+            Computadores
+          </button>
+
+          <button type="button" class="subcategory-button" data-filter="audio">
+            Áudio
+          </button>
+
+          <button type="button" class="subcategory-button" data-filter="acessorios">
+            Acessórios
+          </button>
+
+          <button type="button" class="subcategory-button" data-filter="gadgets">
+            Gadgets
+          </button>
+        </div>
+      </div>
+
+
+      <!-- ESPORTE -->
+      <div class="category-menu">
+        <button
+          type="button"
+          class="cat-chip category-toggle"
+          data-category="esporte">
+          Esporte
+          <span class="category-arrow">⌄</span>
+        </button>
+
+        <div class="category-dropdown">
+          <button type="button" class="subcategory-button" data-filter="esporte">
+            Todos
+          </button>
+
+          <button type="button" class="subcategory-button" data-filter="fitness">
+            Fitness
+          </button>
+
+          <button type="button" class="subcategory-button" data-filter="musculacao">
+            Musculação
+          </button>
+
+          <button type="button" class="subcategory-button" data-filter="corrida">
+            Corrida
+          </button>
+
+          <button type="button" class="subcategory-button" data-filter="futebol">
+            Futebol
+          </button>
+
+          <button type="button" class="subcategory-button" data-filter="camping">
+            Camping
+          </button>
+
+          <button type="button" class="subcategory-button" data-filter="acessorios-esportes">
+            Acessórios
+          </button>
+        </div>
+      </div>
+
+
+      <!-- PET -->
+      <div class="category-menu">
+        <button
+          type="button"
+          class="cat-chip category-toggle"
+          data-category="pet">
+          Pet
+          <span class="category-arrow">⌄</span>
+        </button>
+
+        <div class="category-dropdown">
+          <button type="button" class="subcategory-button" data-filter="pet">
+            Todos
+          </button>
+
+          <button type="button" class="subcategory-button" data-filter="cachorros">
+            Cachorros
+          </button>
+
+          <button type="button" class="subcategory-button" data-filter="gatos">
+            Gatos
+          </button>
+
+          <button type="button" class="subcategory-button" data-filter="alimentacao-pet">
+            Alimentação
+          </button>
+
+          <button type="button" class="subcategory-button" data-filter="brinquedos">
+            Brinquedos
+          </button>
+
+          <button type="button" class="subcategory-button" data-filter="acessorios">
+            Acessórios
+          </button>
+        </div>
+      </div>
+
+
+      <!-- ACESSÓRIOS -->
+      <div class="category-menu">
+        <button
+          type="button"
+          class="cat-chip category-toggle"
+          data-category="acessorios">
+          Acessórios
+          <span class="category-arrow">⌄</span>
+        </button>
+
+        <div class="category-dropdown">
+          <button type="button" class="subcategory-button" data-filter="acessorios">
+            Todos
+          </button>
+
+          <button type="button" class="subcategory-button" data-filter="bolsas">
+            Bolsas
+          </button>
+
+          <button type="button" class="subcategory-button" data-filter="mochilas">
+            Mochilas
+          </button>
+
+          <button type="button" class="subcategory-button" data-filter="carteiras">
+            Carteiras
+          </button>
+
+          <button type="button" class="subcategory-button" data-filter="relogios">
+            Relógios
+          </button>
+
+          <button type="button" class="subcategory-button" data-filter="oculos">
+            Óculos
+          </button>
+
+          <button type="button" class="subcategory-button" data-filter="outros-acessorios">
+            Outros
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="sobre-plataforma" id="sobre">
   <div class="wrap">
 
-    <div class="sobre-header">
-      <p class="sobre-eyebrow">Sobre a BombaNet</p>
+      <div class="sobre-header">
+        <p class="sobre-eyebrow">Sobre a BombaNet</p>
 
-      <h2>Uma vitrine para encontrar bons produtos com mais facilidade.</h2>
+        <h2>Uma vitrine para encontrar bons produtos com mais facilidade.</h2>
 
-      <p class="sobre-intro">
-        A BombaNet reúne produtos selecionados de diferentes lojas
-        em um único lugar, facilitando a busca por ofertas, novidades
-        e produtos interessantes.
-      </p>
-    </div>
+       <p class="sobre-intro">
+         A BombaNet reúne produtos selecionados de diferentes lojas
+          em um único lugar, facilitando a busca por ofertas, novidades
+         e produtos interessantes.
+        </p>
+      </div>
 
     <div class="sobre-grid">
 
