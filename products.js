@@ -26,7 +26,7 @@ const PRODUCTS = [
     name: 'Mochila Tática Militar 50L',
     categories: ['acessorios', 'camping', 'esporte'],
     categoryLabel: 'Acessórios',
-    price: 'R$ 103,45',
+    price: 'R$ 98,70',
     oldPrice: 'R$ 108,89',
     image:
       'https://down-aka-br.img.susercontent.com/br-11134207-820lp-mpj3i9oxm87664.webp',
@@ -37,7 +37,7 @@ const PRODUCTS = [
     name: 'Assitente de Abdominais com Cordas de Resistência',
     category: 'esporte',
     categoryLabel: 'Esportes',
-    price: 'R$ 43,99',
+    price: 'R$ 39,99',
     oldPrice: 'R$ 129,00',
     image:
       'https://down-aka-br.img.susercontent.com/br-11134207-820mc-ms9m8m3uno5ge3.webp',
@@ -58,7 +58,7 @@ const PRODUCTS = [
     name: 'Tapete de Banheiro Veludo Coral 60x40cm Super Absorvente',
     category: 'banheiro',
     categoryLabel: 'Banheiro',
-    price: 'R$ 11,79',
+    price: 'R$ 12,79',
     oldPrice: 'R$ 33,00',
     image:
       'https://down-aka-br.img.susercontent.com/br-11134207-820li-mr8iqiwv1xqdc4.webp',
