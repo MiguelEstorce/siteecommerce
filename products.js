@@ -619,7 +619,7 @@ const PRODUCTS = [
     link: 'https://meli.la/1CTDkUP',
     tag: 'Oferta',
   },
-
+  /*
   {
     name: '',
     categories: ['',''],
@@ -752,4 +752,5 @@ const PRODUCTS = [
     link: '',
     tag: 'Oferta',
   },
+  */
 ];
