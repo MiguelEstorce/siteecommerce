@@ -26,8 +26,8 @@ const PRODUCTS = [
     name: 'Mochila Tática Militar 50L',
     categories: ['camping','viagem','esporte','malas'],
     categoryLabel: 'Viagem',
-    price: 'R$ 98,70',
-    oldPrice: 'R$ 108,89',
+    price: 'R$ 96,90',
+    oldPrice: 'R$ 103,00',
     image:
       'https://down-aka-br.img.susercontent.com/br-11134207-820lp-mpj3i9oxm87664.webp',
     link: 'https://s.shopee.com.br/8fSNboUmDV',
@@ -47,7 +47,7 @@ const PRODUCTS = [
     name: 'Conjunto de Camping Mesa Retangular Dobrável',
     categories: ['camping'],
     categoryLabel: 'Camping',
-    price: 'R$ 156,75',
+    price: 'R$ 155,80',
     oldPrice: 'R$ 164,99',
     image:
       'https://down-aka-br.img.susercontent.com/br-11134207-820l7-mpj3i9pa9c777d.webp',
@@ -58,8 +58,8 @@ const PRODUCTS = [
     name: 'Tapete de Banheiro Veludo Coral 60x40cm Super Absorvente',
     categories: ['banheiro','casa'],
     categoryLabel: 'Banheiro',
-    price: 'R$ 12,79',
-    oldPrice: 'R$ 33,00',
+    price: 'R$ 11,79',
+    oldPrice: 'R$ 12,79',
     image:
       'https://down-aka-br.img.susercontent.com/br-11134207-820li-mr8iqiwv1xqdc4.webp',
     link: 'https://s.shopee.com.br/3qN7s3GMbl',
@@ -68,8 +68,8 @@ const PRODUCTS = [
     name: 'Pano de Limpeza Fio de Prata Dupla Face',
     categories: ['casa','limp'],
     categoryLabel: 'Limpeza',
-    price: 'R$ 6,99',
-    oldPrice: 'R$ 26,00',
+    price: 'R$ 15,59',
+    oldPrice: 'R$ 16,59',
     image:
       'https://down-aka-br.img.susercontent.com/br-11134207-820lu-mpj58oa8ml1d96.webp',
     link: 'https://s.shopee.com.br/1LfmtaraHV',
@@ -78,7 +78,7 @@ const PRODUCTS = [
     name: 'Fatiador de Cortador de Legumes',
     categories: ['casa', 'cozinha'],
     categoryLabel: 'Cozinha',
-    price: 'R$ 39,99',
+    price: 'R$ 38,99',
     oldPrice: 'R$ 110,00',
     image:
       'https://down-bs-br.img.susercontent.com/br-11134207-820lg-mpj4ttrr3qir7f.webp',
@@ -88,7 +88,7 @@ const PRODUCTS = [
     name: 'Suporte de Parede para Bicicleta, Gancho de Aço',
     categories: ['esporte','acessorios-esportes'],
     categoryLabel: 'Esportes',
-    price: '17,79',
+    price: 'R$ 16,79 - 17,79',
     oldPrice: 'R$ 36,00',
     image:
       'https://down-bs-br.img.susercontent.com/br-11134207-820ld-mpj78fhzeakgaf.webp',
@@ -98,7 +98,7 @@ const PRODUCTS = [
     name: 'Bolsa Peitoral Feminina Metelassada Multiuso',
     categories: ['bolsas-feminino','feminino'],
     categoryLabel: 'Bolsas',
-    price: 'R$ 27,99',
+    price: 'R$ 26,99 - 27,99',
     oldPrice: 'R$ 38,00',
     image:
       'https://down-bs-br.img.susercontent.com/br-11134207-820lt-mpj4ttrt3dhdb7.webp',
@@ -120,7 +120,7 @@ const PRODUCTS = [
     name: 'Organizador de Bolsas Pendente com 6 Compartimentos',
     categories: ['bolsas-feminino','feminino'],
     categoryLabel: 'Bolsas',
-    price: 'R$ 17,79',
+    price: 'R$ 16,79 - 17,79',
     oldPrice: '39,00',
     image:
       'https://down-bs-br.img.susercontent.com/br-11134207-820lo-mpgavkddg5c11c.webp',
@@ -142,7 +142,7 @@ const PRODUCTS = [
     name: 'Para organização de viagem',
     categories: ['viagem','malas','organizacao-viagem'],
     categoryLabel: 'viagens',
-    price: 'R$ 13,82',
+    price: 'R$ 12,82 - 13,82',
     oldPrice: '59,00',
     image:
       'https://down-bs-br.img.susercontent.com/br-11134207-820lz-mpafqied7cht51.webp',
@@ -153,7 +153,7 @@ const PRODUCTS = [
     name: 'Ganchos de Sucção Reutilizáveis, Resistentes, e muito mais',
     categories: ['casa','banheiro','cozinha'],
     categoryLabel: 'Casa',
-    price: 'R$ 17,99',
+    price: 'R$ 16,99 - 17,99',
     oldPrice: 'R$ 29,00',
     image:
       'https://down-bs-br.img.susercontent.com/br-11134207-820m6-mpga9xw7krnl8e.webp',
@@ -164,7 +164,7 @@ const PRODUCTS = [
     name: 'Kit Rolo de Pintura Multifuncional, 5 Peças e muito mais',
     categories: ['obra','pintura'],
     categoryLabel: 'Pintura',
-    price: 'R$ 77,99',
+    price: 'R$ 72,99 - 77,99',
     oldPrice: 'R$ 106,00',
     image:
       'https://down-bs-br.img.susercontent.com/br-11134207-820lb-mpj6t4ursjcz48.webp',
@@ -175,7 +175,7 @@ const PRODUCTS = [
     name: 'Ralador de Legumes Manual com 3 Lâminas, Multifuncional, e muito mais',
     categories: ['casa', 'cozinha'],
     categoryLabel: 'Cozinha',
-    price: 'R$ 69,99',
+    price: 'R$ 64,99 - 69,99',
     oldPrice: 'R$ 96,00',
     image:
       'https://down-bs-br.img.susercontent.com/br-11134207-820mh-mpgbgwrny2h26d.webp',
@@ -186,7 +186,7 @@ const PRODUCTS = [
     name: 'Pulverizador Manual Universal para Garrafa Pet, e muito mais',
     categories: ['casa', 'limp'],
     categoryLabel: 'Limpeza',
-    price: 'R$ 6,99',
+    price: 'R$ 14,99 - 15,99',
     oldPrice: 'R$ 23,00',
     image:
       'https://down-bs-br.img.susercontent.com/br-11134207-820md-mpgbrwjat81y5f.webp',
@@ -197,7 +197,7 @@ const PRODUCTS = [
     name: 'Limpador Magnético Profissional para Limpeza de Vidros, e muito mais',
     categories: ['casa', 'limp'],
     categoryLabel: 'Limpeza',
-    price: 'R$ 24,99',
+    price: 'R$ 23,99 - 24,99',
     oldPrice: 'R$ 66,00',
     image:
       'https://down-tx-br.img.susercontent.com/br-11134207-820lk-mpahyex8epds18.webp',
@@ -219,7 +219,7 @@ const PRODUCTS = [
     name: 'Caixa Organizadora para Sapatos Transparente, e muito mais',
     categories: ['casa', 'quarto','organizacao-casa'],
     categoryLabel: 'Quarto',
-    price: 'R$ 29,99',
+    price: 'R$ 34,99 - 35,99',
     oldPrice: 'R$ 49,00',
     image:
       'https://down-tx-br.img.susercontent.com/br-11134207-820md-mpgavkdd94htc9.webp',
@@ -230,7 +230,7 @@ const PRODUCTS = [
     name: 'Toalha de Mesa Retrô Europeia Impermeável, e muito mais',
     categories: ['casa', 'cozinha'],
     categoryLabel: 'Cozinha',
-    price: 'R$ 30,69',
+    price: 'R$ 29,69 - 30,69',
     oldPrice: 'R$ 62,00',
     image:
       'https://down-zl-br.img.susercontent.com/br-11134207-820lt-mpj5zcwese0z27.webp',
@@ -241,7 +241,7 @@ const PRODUCTS = [
     name: 'Cinta Corretora de Postura para Coluna, e muito mais',
     categories: ['feminino', 'masculino', 'esporte','acessorios-feminino','acessorios-masculinos'],
     categoryLabel: 'Masculino',
-    price: 'R$ 13,89',
+    price: 'R$ 12,89 - 13,89',
     oldPrice: 'R$ 39,00',
     image:
       'https://down-zl-br.img.susercontent.com/br-11134207-820l4-mpgb7mtw4h6ucc.webp',
@@ -263,7 +263,7 @@ const PRODUCTS = [
     name: 'Kit Quarto Infantil, Lençol+Cortina 2 Partes Temas Estampados',
     categories: ['quarto','casa','infantil'],
     categoryLabel: 'Quarto',
-    price: 'R$ 57,57',
+    price: 'R$ 56,90',
     oldPrice: 'R$ 61,90',
     image:
       'https://down-bs-br.img.susercontent.com/br-11134207-820mb-mpmjdc7k1c76e9.webp',
@@ -295,7 +295,7 @@ const PRODUCTS = [
     name: 'Kit Jogo 5 Capas de Almofadas Suede Aveludade 45x45cm, e muito mais',
     categories: ['casa','decoracao-casa','sala'],
     categoryLabel: 'Casa',
-    price: 'R$ 48,36',
+    price: 'R$ 47,59',
     oldPrice: 'R$ 76,76',
     image:
       'https://down-bs-br.img.susercontent.com/br-11134207-820la-mseyr7akkttxda.webp',
@@ -317,8 +317,8 @@ const PRODUCTS = [
     name: 'Kit Colcha Cobre Leito Premium Solteiro Casal, e muito mais',
     categories: ['casa','quarto'],
     categoryLabel: 'Quarto',
-    price: 'R$ 57,07 - 102,92',
-    oldPrice: 'R$ 82,71 - 137,22',
+    price: 'R$ 55,41',
+    oldPrice: 'R$ 82,71',
     image:
       'https://down-bs-br.img.susercontent.com/br-11134207-820m5-msc1j68eb5s615.webp',
     link: 'https://s.shopee.com.br/1BMN8NMHEO',
@@ -339,7 +339,7 @@ const PRODUCTS = [
     name: 'Jogo Lençol Com Fronha Cama Infantil Solteiro Temático 1,50m x 2,25m, e muito mais',
     categories: ['casa','quarto','infantil'],
     categoryLabel: 'Quarto',
-    price: 'R$ 29,91 - 39,87',
+    price: 'R$ 29,91',
     oldPrice: 'R$ 39,87',
     image:
       'https://down-bs-br.img.susercontent.com/br-11134207-820m0-mqgzz2nhatc1ab.webp',
@@ -383,7 +383,7 @@ const PRODUCTS = [
     name: 'Kit Capa Almofada Com Ziper 3 Peças 45x45cm Suede Luxo, e muito mais',
     categories: ['casa','decoracao-casa','sala'],
     categoryLabel: 'Casa',
-    price: 'R$ 78,81 - 79,81',
+    price: 'R$ 79,81',
     oldPrice: '',
     image:
       'https://down-bs-br.img.susercontent.com/br-11134207-820lh-mog6oe7jq9z4dd.webp',
@@ -449,8 +449,9 @@ const PRODUCTS = [
     name: 'Kit Colcha Cobre Leito Dupla Face 1,60M x 2,40M, e muito mais',
     categories: ['quarto','casa'],
     categoryLabel: 'Quarto',
-    price: 'R$ 61,90 - 62,90',
-    image:
+    price: 'R$ 62,90',
+    oldPrice: 'R$ 89,85',
+    image: 
       'https://down-bs-br.img.susercontent.com/br-11134207-820lu-mpnpu8r5zx8j96.webp',
     link: 'https://s.shopee.com.br/2VrknWRFHD',
     tag: 'Oferta',
