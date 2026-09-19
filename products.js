@@ -183,17 +183,6 @@ const PRODUCTS = [
     tag: 'Oferta',
   },
   {
-    name: 'Pulverizador Manual Universal para Garrafa Pet, e muito mais',
-    categories: ['casa', 'limp'],
-    categoryLabel: 'Limpeza',
-    price: 'R$ 14,99 - 15,99',
-    oldPrice: 'R$ 23,00',
-    image:
-      'https://down-bs-br.img.susercontent.com/br-11134207-820md-mpgbrwjat81y5f.webp',
-    link: 'https://s.shopee.com.br/20vTrqPSg8',
-    tag: 'Oferta',
-  },
-  {
     name: 'Limpador Magnético Profissional para Limpeza de Vidros, e muito mais',
     categories: ['casa', 'limp'],
     categoryLabel: 'Limpeza',
