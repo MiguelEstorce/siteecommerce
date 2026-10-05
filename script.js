@@ -55,7 +55,7 @@ const pagination =
  * Quantidade de produtos por página.
  */
 
-const PRODUCTS_PER_PAGE = 5;
+const PRODUCTS_PER_PAGE = 50;
 
 
 /*
@@ -75,6 +75,50 @@ let currentProducts = [];
 /* ============================================================
    CATEGORIAS
    ============================================================ */
+   let PRODUCTS = [];
+   async function carregarProdutos() {
+  try {
+    const resposta =
+      await fetch("./automacao/produtos.json");
+    if (!resposta.ok) {
+      throw new Error(
+        `Erro ao carregar produtos.json: ${resposta.status}`
+      );
+    }
+    const produtosShopee =
+      await resposta.json();
+    PRODUCTS = produtosShopee.map(produto => {
+      return {
+        name: produto.nome,
+        image: produto.imagem,
+        price: produto.precoComDesconto,
+        oldPrice: produto.precoSemDesconto,
+        link: produto.link,
+        categories: produto.categorias || [],
+        categoryLabel:
+          produto.categorias?.[0] || "",
+        tag:
+          produto.desconto
+            ? `${produto.desconto}% OFF`
+            : ""
+      };
+    });
+    console.log(
+      "Produtos carregados da Shopee:",
+      PRODUCTS.length
+    );
+    currentProducts = PRODUCTS;
+    renderProducts(PRODUCTS);
+  } catch (erro) {
+    console.error(
+      "Erro ao carregar produtos da Shopee:",
+      erro
+    );
+    PRODUCTS = [];
+    currentProducts = [];
+    renderProducts([]);
+  }
+}
 
 function getCategories(product) {
 
@@ -780,12 +824,7 @@ function scrollToProducts() {
 /* ============================================================
    RENDERIZAÇÃO INICIAL
    ============================================================ */
-
-currentProducts =
-  PRODUCTS;
-
-
-renderProducts(PRODUCTS);
+carregarProdutos();
 
 
 /* ============================================================

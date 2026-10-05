@@ -1,0 +1,165 @@
+/* ============================================================
+   COMUNIDADE — cole este bloco no final do seu styles.css
+   ============================================================ */
+
+.comunidade {
+  padding: 20px 0;
+  background: #1c2b45;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.comunidade-card {
+  position: relative;
+  overflow: hidden;
+  background: var(--navy);
+  border-radius: var(--radius-lg);
+  padding: 56px 52px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.comunidade-copy {
+  flex: 1 1 380px;
+}
+
+/* textura sutil no canto, só pra não ficar um bloco de cor chapada */
+/*.comunidade-card::before {
+  content: "";
+  position: absolute;
+  top: -120px;
+  right: -120px;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(201,163,74,0.16) 0%, transparent 70%);
+  pointer-events: none;
+}
+*/
+.comunidade-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  color: var(--gold);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.comunidade-card h2 {
+  color: var(--white);
+  font-size: 1.9rem;
+  max-width: 20ch;
+  margin-bottom: 14px;
+}
+
+.comunidade-card > .comunidade-copy > p {
+  max-width: 46ch;
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 0.96rem;
+  line-height: 1.7;
+  margin-bottom: 22px;
+}
+
+.comunidade-lista {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.comunidade-lista li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.9rem;
+}
+
+.comunidade-lista svg {
+  flex-shrink: 0;
+  color: var(--gold);
+  margin-right: 2px;
+}
+
+.comunidade-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  text-align: left;
+  position: relative;
+  z-index: 2;
+}
+
+.comunidade-cta .btn {
+  background: var(--gold);
+  color: var(--navy);
+  padding: 15px 30px;
+  font-size: 0.98rem;
+  white-space: nowrap;
+}
+
+.comunidade-cta .btn:hover {
+  background: #bd9a4e;
+}
+
+.comunidade-cta-note {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.78rem;
+}
+
+.comunidade-quote {
+  position: relative;
+  z-index: 1;
+  max-width: 260px;
+  text-align: right;
+}
+
+.comunidade-quote .quote-mark {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 3rem;
+  line-height: 1;
+  color: var(--gold);
+  opacity: 0.5;
+  margin-bottom: 4px;
+}
+
+.comunidade-quote p {
+  margin: 0;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.3rem;
+  line-height: 1.35;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.comunidade-quote span {
+  display: block;
+  margin-top: 12px;
+  font-family: var(--font-body);
+  font-style: normal;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--gold);
+}
+
+@media (max-width: 860px) {
+  .comunidade-card {
+    padding: 40px 30px;
+    text-align: left;
+  }
+  .comunidade-quote {
+    display: none;
+  }
+}

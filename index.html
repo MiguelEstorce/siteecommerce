@@ -11,6 +11,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="comunidade.css">
+<link rel="stylesheet" href="carrossel.css">
 <link rel="stylesheet" href="loader.css">
 
 
@@ -115,33 +117,17 @@
       </div>
     </div>
   </section>
+  <section class="parceiros" id="parceiros">
+  <div class="wrap">
+    <p class="parceiros-label">Lojas e parceiros da BombaNet</p>
+  </div>
 
-  
-
-  <!--<section class="categorias" id="categorias">
-    <div class="wrap">
-      <h2>Categorias</h2>
-      <div class="cat-row" id="catRow">
-        <button class="cat-chip is-active" data-filter="todos">Todos</button>
-        <button class="cat-chip" data-filter="moda">Feminino</button>
-        <button class="cat-chip" data-filter="masculino">Masculino</button>
-        <button class="cat-chip" data-filter="infantil">Infantil</button>
-        <button class="cat-chip" data-filter="casa">Casa</button>
-        <button class="cat-chip" data-filter="obra">Construção</button>
-        <button class="cat-chip" data-filter="viagem">Viagens</button>
-        <button class="cat-chip" data-filter="cozinha">Cozinha</button>
-        <button class="cat-chip" data-filter="tech">Eletrônicos</button>
-        <button class="cat-chip" data-filter="limp">Limpeza</button>
-        <button class="cat-chip" data-filter="quarto">Quarto</button>
-        <button class="cat-chip" data-filter="beleza">Produtos de Beleza</button>
-        <button class="cat-chip" data-filter="pet">Pet</button>
-        <button class="cat-chip" data-filter="banheiro">Banheiro</button>
-        <button class="cat-chip" data-filter="camping">Camping</button>
-        <button class="cat-chip" data-filter="esporte">Esporte</button>
-        <button class="cat-chip" data-filter="acessorios">Acessórios</button>
-      </div>
+  <div class="marquee">
+    <div class="marquee-track" id="marqueeTrack">
+      <!-- as logos são geradas via JS a partir de partners.js -->
     </div>
-  </section>-->
+  </div>
+</section>
 
   <section class="categorias" id="categorias">
   <div class="wrap">
@@ -185,6 +171,10 @@
             Bolsas
           </button>
 
+          <button type="button" class="subcategory-button" data-filter="perfume-feminino">
+            Perfumes
+          </button>
+
           <button type="button" class="subcategory-button" data-filter="acessorios-feminino">
             Acessórios
           </button>
@@ -223,6 +213,10 @@
             Bolsas
           </button>
 
+          <button type="button" class="subcategory-button" data-filter="perfume-masculino">
+            Perfumes
+          </button>
+
           <button type="button" class="subcategory-button" data-filter="acessorios-masculinos">
             Acessórios
           </button>
@@ -257,7 +251,7 @@
             Brinquedos
           </button>
 
-          <button type="button" class="subcategory-button" data-filter="acessorios">
+          <button type="button" class="subcategory-button" data-filter="acessorios-infantil">
             Acessórios
           </button>
         </div>
@@ -376,7 +370,7 @@
           </button>
 
           <button type="button" class="subcategory-button" data-filter="acessorios-viagem">
-            Acessórios
+            Acessórios de Viagem
           </button>
 
           <button type="button" class="subcategory-button" data-filter="organizacao">
@@ -413,7 +407,7 @@
             Áudio
           </button>
 
-          <button type="button" class="subcategory-button" data-filter="acessorios">
+          <button type="button" class="subcategory-button" data-filter="acessorios-eletronicos">
             Acessórios
           </button>
 
@@ -422,8 +416,75 @@
           </button>
         </div>
       </div>
+      <!-- PEÇAS PC  -->
+      <div class="category-menu">
+        <button
+          type="button"
+          class="cat-chip category-toggle"
+          data-category="pc">
+          Peças de Computadores
+          <span class="category-arrow">⌄</span>
+        </button>
 
+        <div class="category-dropdown">
+          <button type="button" class="subcategory-button" data-filter="pc">
+            Todos
+          </button>
 
+          <button type="button" class="subcategory-button" data-filter="memoria">
+            Memoria Ram
+          </button>
+
+          <button type="button" class="subcategory-button" data-filter="placa-de-video">
+            Placa de Video
+          </button>
+
+          <button type="button" class="subcategory-button" data-filter="processadpr">
+            Processador
+          </button>
+
+          <button type="button" class="subcategory-button" data-filter="placamae">
+            Placa Mãe
+          </button>
+
+          <button type="button" class="subcategory-button" data-filter="watercooler">
+            Water Cooler
+          </button>
+
+          <button type="button" class="subcategory-button" data-filter="aircooler">
+            Air Cooler
+          </button>
+
+          <button type="button" class="subcategory-button" data-filter="fan">
+            Fans
+          </button>
+
+          <button type="button" class="subcategory-button" data-filter="gabinete">
+            Gabinete
+          </button>
+
+          <button type="button" class="subcategory-button" data-filter="fonte">
+            Fonte
+          </button>
+
+          <button type="button" class="subcategory-button" data-filter="armazenamento">
+            Armazenamento
+          </button>
+
+          <button type="button" class="subcategory-button" data-filter="kit">
+            Kit
+          </button>
+
+          <button type="button" class="subcategory-button" data-filter="teclado">
+            Teclado
+          </button>
+
+          <button type="button" class="subcategory-button" data-filter="mouse">
+            Mouse
+          </button>
+
+        </div>
+      </div>
       <!-- ESPORTE -->
       <div class="category-menu">
         <button
@@ -497,7 +558,7 @@
             Brinquedos
           </button>
 
-          <button type="button" class="subcategory-button" data-filter="acessorios">
+          <button type="button" class="subcategory-button" data-filter="outros-acessorios-pet">
             Acessórios
           </button>
         </div>
@@ -509,13 +570,13 @@
         <button
           type="button"
           class="cat-chip category-toggle"
-          data-category="acessorios">
+          data-category="acessorios-categoria">
           Acessórios
           <span class="category-arrow">⌄</span>
         </button>
 
         <div class="category-dropdown">
-          <button type="button" class="subcategory-button" data-filter="acessorios">
+          <button type="button" class="subcategory-button" data-filter="acessorios-categoria">
             Todos
           </button>
 
@@ -632,7 +693,7 @@
       </div>
 
       <div class="product-grid" id="productGrid">
-        <!-- os cards são gerados via JS a partir da lista em products.js -->
+      
       </div>
 
       <div
@@ -708,7 +769,49 @@
 
   </div>
 </section>
+<section class="comunidade" id="comunidade">
+  <div class="wrap">
+    <div class="comunidade-card">
 
+      <div class="comunidade-copy">
+        <span class="comunidade-eyebrow">Comunidade BombaNet</span>
+        <h2>Faça parte da nossa comunidade</h2>
+        <p>
+          Entre no nosso grupo e fique por dentro de tudo o que
+          acontece na BombaNet, direto no seu celular.
+        </p>
+
+        <ul class="comunidade-lista">
+          <li>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Promoções em primeira mão
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Avisos de produtos novos
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Sem spam — saia quando quiser
+          </li>
+        </ul>
+      </div>
+
+      <div class="comunidade-cta">
+        <a href="https://chat.whatsapp.com/ItuDHYBIZdH7Jn9kWbfeJ8" target="_blank" rel="noopener" class="btn">
+          Entrar na comunidade
+        </a>
+        <p class="comunidade-cta-note">Gratuito, sem cadastro</p>
+      </div>
+
+      <div class="comunidade-quote">
+        <p>BombaNet — descubra seu próximo achado.</p>
+        <span>ACHADOS TODA SEMANA</span>
+      </div>
+
+    </div>
+  </div>
+</section>
   <section class="patro-cinos" id="patro-cinos">
     <div class="wrap">
       <h2>Patrocinadores</h2>
@@ -780,7 +883,7 @@
       <div class="novidades-copy">
         <h2>Quer Divulgar Seus Produtos?</h2>
         <p>
-         Quer Divulgar Seus Produtos e Não Sabe Como fazer?
+         Quer Divulgar Seus Produtos Na BombaNet?
          Me Envie um Email
         </p>
       </div>
@@ -884,7 +987,8 @@
 </footer>
 
 <script src="loader.js"></script>
-<script src="products.js"></script>
 <script src="script.js"></script>
+<script src="parceria.js"></script>
+<script src="carrossel.js"></script>
 </body>
 </html>
