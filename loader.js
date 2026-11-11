@@ -6,12 +6,12 @@ document.body.classList.add("is-loading");
 
 const preloader = document.getElementById("preloader");
 const fill = document.getElementById("preloaderFill");
-const MIN_DISPLAY_MS = 1800;
+const MIN_DISPLAY_MS = 2000;
 const startTime = performance.now();
 
 // dá o efeito de "carregando" na barra
 requestAnimationFrame(() => {
-  fill.style.width = "85%";
+  fill.style.width = "100%";
 });
 
 function hidePreloader() {

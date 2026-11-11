@@ -1,99 +1,276 @@
-/* ============================================================
-   TELA DE CARREGAMENTO — "Bombanet"
-   Some sozinha assim que a página termina de carregar.
-   ============================================================ */
+
+/* =========================================
+   PRELOADER — BOM BANET ESPECIAL 11.11
+========================================= */
 
 .preloader {
-  position: fixed;
-  inset: 0;
-  z-index: 999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: radial-gradient(120% 120% at 50% 30%, #22385C 0%, #14213A 60%, #0F1826 100%);
-  transition: opacity 0.5s ease, visibility 0.5s ease;
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #F7F8FA;
+
+    opacity: 1;
+    visibility: visible;
+
+    transition:
+        opacity 0.6s ease,
+        visibility 0.6s ease;
 }
 
 .preloader.is-hidden {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
 }
 
-body.is-loading { overflow: hidden; }
+
 
 .preloader-inner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 22px;
+    width: 100%;
+    max-width: 320px;
+    padding: 30px 24px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
 }
 
-/* A bomba saltitante */
+/* BOMBA */
+
+.bomb {
+    width: 88px;
+    height: 88px;
+    overflow: visible;
+
+    margin-bottom: 18px;
+
+    animation: bombFloat 2s ease-in-out infinite;
+}
+
 .bomb-body {
-  transform-origin: 50px 82px;
-  animation: bomb-jump 0.85s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+    transform-origin: 50px 54px;
+    animation: bombPulse 2s ease-in-out infinite;
 }
 
 .bomb-shadow {
-  fill: #000;
-  opacity: 0.3;
-  transform-origin: 50px 86px;
-  animation: bomb-shadow 0.85s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+    fill: rgba(20, 33, 58, 0.12);
+    animation: shadowPulse 2s ease-in-out infinite;
 }
+
+/* FAÍSCA */
 
 .bomb-spark {
-  transform-origin: 85px 21px;
-  animation: spark-flicker 0.3s ease-in-out infinite;
+    fill: #FF6338;
+    filter: drop-shadow(0 0 5px rgba(255, 99, 56, 0.8));
+
+    animation: sparkGlow 0.8s ease-in-out infinite alternate;
 }
 
-@keyframes bomb-jump {
-  0%, 100% { transform: translateY(0) rotate(-4deg); }
-  50%      { transform: translateY(-20px) rotate(4deg); }
+/* CAMPANHA 11.11 */
+
+.preloader-campaign {
+    margin: 0 0 7px;
+
+    color: #C9A34A;
+
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+
+    letter-spacing: 3px;
+    text-transform: uppercase;
+
+    animation: campaignFade 2s ease-in-out infinite;
 }
 
-@keyframes bomb-shadow {
-  0%, 100% { transform: scale(1); opacity: 0.32; }
-  50%      { transform: scale(0.55); opacity: 0.12; }
-}
-
-@keyframes spark-flicker {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50%      { opacity: 0.35; transform: scale(0.7); }
-}
+/* NOME BOM BANET */
 
 .preloader-word {
-  margin: 0;
-  font-family: "Newsreader", serif;
-  font-style: italic;
-  font-weight: 500;
-  font-size: 1.7rem;
-  color: #F7F6F3;
-  letter-spacing: 0.01em;
+    margin: 0;
+
+    color: #14213A;
+
+    font-family: 'Newsreader', serif;
+    font-size: 34px;
+    font-weight: 700;
+
+    letter-spacing: -1px;
 }
 
-.preloader-dot { color: #C9A34A; }
+.preloader-dot {
+    color: #C9A34A;
+}
+
+/* BARRA DE CARREGAMENTO */
 
 .preloader-bar {
-  width: 180px;
-  height: 3px;
-  border-radius: 999px;
-  background: rgba(247, 246, 243, 0.16);
-  overflow: hidden;
+    width: 190px;
+    height: 4px;
+    margin-top: 25px;
+    overflow: hidden;
+    background: rgba(20, 33, 58, 0.10);
+    border-radius: 20px;
 }
 
 .preloader-bar span {
-  display: block;
-  height: 100%;
-  width: 0%;
-  background: #C9A34A;
-  border-radius: 999px;
-  transition: width 1.1s cubic-bezier(0.4, 0.1, 0.2, 1);
+    display: block;
+    width: 0;
+    height: 100%;
+
+    background: linear-gradient(
+        90deg,
+        #C9A34A,
+        #FF6338
+    );
+
+    border-radius: 20px;
+    transition: width 0.6s ease;
+
+    position: relative;
+    overflow: hidden;
 }
 
+.preloader-bar span::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -50%;
+
+    width: 50%;
+    height: 100%;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.85),
+        transparent
+    );
+
+    animation: loadingShine 1s linear infinite;
+}
+
+@keyframes loadingShine {
+    from {
+        left: -50%;
+    }
+
+    to {
+        left: 120%;
+    }
+}
+
+/* =========================================
+   ANIMAÇÕES
+========================================= */
+
+@keyframes bombFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-7px);
+    }
+}
+
+@keyframes bombPulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.04);
+    }
+}
+
+@keyframes shadowPulse {
+    0%, 100% {
+        transform: scaleX(1);
+        opacity: 0.7;
+    }
+
+    50% {
+        transform: scaleX(0.75);
+        opacity: 0.35;
+    }
+}
+
+@keyframes sparkGlow {
+    from {
+        opacity: 0.65;
+        filter: drop-shadow(0 0 2px #FF6338);
+    }
+
+    to {
+        opacity: 1;
+        filter: drop-shadow(0 0 9px #FF6338);
+    }
+}
+
+@keyframes campaignFade {
+    0%, 100% {
+        opacity: 0.75;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+@keyframes loadingProgress {
+    0% {
+        transform: translateX(-110%);
+    }
+
+    100% {
+        transform: translateX(290%);
+    }
+}
+
+/* =========================================
+   RESPONSIVIDADE
+========================================= */
+
+@media (max-width: 480px) {
+    .preloader-inner {
+        max-width: 280px;
+    }
+
+    .bomb {
+        width: 80px;
+        height: 80px;
+    }
+
+    .preloader-word {
+        font-size: 30px;
+    }
+
+    .preloader-bar {
+        width: 170px;
+    }
+}
+
+/* ACESSIBILIDADE */
+
 @media (prefers-reduced-motion: reduce) {
-  .bomb-body,
-  .bomb-shadow,
-  .bomb-spark { animation: none; }
-  .preloader-bar span { transition: width 0.3s linear; }
+    .bomb,
+    .bomb-body,
+    .bomb-shadow,
+    .bomb-spark,
+    .preloader-campaign,
+    .preloader-bar span {
+        animation: none !important;
+    }
+}
+/* Remove a rolagem durante o carregamento */
+body.is-loading {
+    overflow: hidden;
 }

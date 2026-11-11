@@ -37,9 +37,10 @@
         <circle cx="50" cy="54" r="27" fill="#14213A" stroke="#C9A34A" stroke-width="2.5"/>
         <circle cx="40" cy="44" r="6" fill="rgba(247,246,243,0.14)"/>
         <path d="M61 33 Q71 20 83 23" stroke="#C9A34A" stroke-width="3" fill="none" stroke-linecap="round"/>
-        <circle class="bomb-spark" cx="85" cy="21" r="5" fill="#C9A34A"/>
+        <circle class="bomb-spark" cx="85" cy="21" r="5" fill="#FF6338"/>
       </g>
     </svg>
+    <p class="preloader-campaign">ESPECIAL 11.11</p>
     <p class="preloader-word">Bombanet<span class="preloader-dot">.</span></p>
     <div class="preloader-bar"><span id="preloaderFill"></span></div>
   </div>
@@ -685,17 +686,20 @@
   </div>
 </section>
 
-  <section class="produtos" id="produtos">
-    <div class="wrap">
-      <div class="section-head">
-        <h2>Produtos selecionados</h2>
-        <p>Clique em qualquer produto para ver a oferta completa na loja de origem.</p>
-      </div>
+<section class="produtos" id="produtos">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Produtos selecionados</h2>
+      <p>Clique em qualquer produto para ver a oferta completa na loja de origem.</p>
+    </div>
 
-      <div class="product-grid" id="productGrid">
-      
-      </div>
-
+    <div class="marketplace-filter" id="marketplaceFilter">
+      <button type="button" class="marketplace-button is-active" data-marketplace="todos">Todos</button>
+      <button type="button" class="marketplace-button" data-marketplace="shopee">Shopee</button>
+      <button type="button" class="marketplace-button" data-marketplace="mercado_livre">Mercado Livre</button>
+      <button type="button" class="marketplace-button" data-marketplace="amazon">Amazon</button>
+    </div>
+    <div class="product-grid" id="productGrid"></div>
       <div
         class="pagination"
         id="pagination"
@@ -705,9 +709,20 @@
       <p class="empty-state" id="emptyState" hidden>
         Nenhum produto encontrado. Tente outra busca ou categoria.
       </p>
-    </div>
-  </section>
-
+  </div>
+</section>
+<!-- CATEGORIAS -->
+<section class="categorias" id="categorias">
+  <!-- Todo o conteúdo atual das categorias -->
+</section>
+<!-- PRODUTOS -->
+<section class="produtos" id="produtos">
+  <!-- Todo o conteúdo atual dos produtos -->
+</section>
+<!-- SOBRE A BOMBANET -->
+<section class="sobre-plataforma" id="sobre">
+  <!-- Todo o conteúdo atual sobre a plataforma -->
+</section>
   <section class="como-funciona" id="como-funciona">
     <div class="wrap">
       <h2>Como funciona</h2>
